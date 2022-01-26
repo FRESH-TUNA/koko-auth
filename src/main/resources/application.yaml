@@ -22,27 +22,23 @@ spring:
             scope:
               - email
               - profile
-  app:
-    auth:
-      tokenSecret: ${APP_AUTH_SECRET}
-      tokenExpirationMsec: 864000000
+app:
+  auth:
+    tokenSecret: ${APP_AUTH_SECRET}
+    tokenExpirationMsec: 864000000
 ---
 spring:
   config:
     activate:
       on-profile: local
-  app:
-    cors:
-      allowedOrigins: http://localhost:3000 # Comma separated list of allowed origins
-    oauth2:
-      # After successfully authenticating with the OAuth2 Provider,
-      # we'll be generating an auth token for the user and sending the token to the
-      # redirectUri mentioned by the client in the /oauth2/authorize request.
-      # We're not using cookies because they won't work well in mobile clients.
-      authorizedRedirectUris:
-        - http://localhost:3000/oauth2/redirect
----
-spring:
-  config:
-    activate:
-      on-profile: prod
+app:
+  cors:
+    allowedOrigins: http://localhost:3000 # Comma separated list of allowed origins
+  oauth2:
+    # After successfully authenticating with the OAuth2 Provider,
+    # we'll be generating an auth token for the user and sending the token to the
+    # redirectUri mentioned by the client in the /oauth2/authorize request.
+    # We're not using cookies because they won't work well in mobile clients.
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect
+
